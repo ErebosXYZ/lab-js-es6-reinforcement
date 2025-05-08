@@ -116,8 +116,17 @@ console.log(genderCount(data));
 
 const promo20 = users => {
   // Your code goes here ...
+  const validUsers = users.filter(u => {
+    const balanceNumber = Number(u.balance.replace(/[$,]/g, ''));
+    return balanceNumber > 20000;
+  });
+  return validUsers.map(u => {
+    return `Dear ${u.firstName}, since your balance is ${u.balance}, you are eligible to apply for this awesome credit card.`
+  })
 };
+
 console.log(promo20(usersArray));
+// console.log(promo20(usersArray));
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
 // Dear Rachelle, since your balance is $35,121.49, you are eligible to apply for this awesome credit card.
